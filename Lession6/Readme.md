@@ -50,7 +50,7 @@ Saving file lists metadata
 Saving other metadata
 Generating sqlite DBs
 Sqlite DBs complete
-
+```
 [root@otus yum.repos.d]# yum repolist enabled
 Загружены модули: fastestmirror, product-id, search-disabled-repos, subscription-manager
 
@@ -60,13 +60,13 @@ Loading mirror speeds from cached hostfile
  * base: mirrors.datahouse.ru
  * extras: mirror.docker.ru
  * updates: mirror.sale-dedic.com
- 
+
 Идентификатор репозитория                                                                        репозиторий                                                                                состояние
 base/7/x86_64                                                                                    CentOS-7 - Base                                                                            10 072
 extras/7/x86_64                                                                                  CentOS-7 - Extras                                                                             515
 local                                                                                            OtusHW-Base                                                                                     1
 updates/7/x86_64                                                                                 CentOS-7 - Updates                                                                          4 425
 repolist: 15 013
-
+```
 
 
