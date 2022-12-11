@@ -60,6 +60,7 @@ Loading mirror speeds from cached hostfile
  * base: mirrors.datahouse.ru
  * extras: mirror.docker.ru
  * updates: mirror.sale-dedic.com
+ 
 Идентификатор репозитория                                                                        репозиторий                                                                                состояние
 base/7/x86_64                                                                                    CentOS-7 - Base                                                                            10 072
 extras/7/x86_64                                                                                  CentOS-7 - Extras                                                                             515
