@@ -2,17 +2,21 @@ yum update
 [root@otus home]# yum install -y redhat-lsb-core wget rpmdevtools rpm-build createrepo yum-utils gcc docker
 
 исходники nginx:
+```
 [root@otus home]# wget https://nginx.org/packages/centos/7/SRPMS/nginx-1.22.1-1.el7.ngx.src.rpm
 [root@otus home]# rpm -i nginx-1.22.1-1.el7.ngx.src.rpm
-
+```
 Собираем пакет:
+```
 [root@otus home]# rpmbuild -bb rpmbuild/SPECS/nginx.spec
-
+```
 Копируем файл в папку будущего репозитория:
+```
 [root@otus home]# mkdir /srv/nginx/x86_64
 [root@otus home]# cp /root/rpmbuild/RPMS/x86_64/nginx-1.22.1-1.el7.ngx.x86_64.rpm /srv/nginx/x86_64
-
+```
 Поднимаем nginx в докере:
+```
 [root@otus /]# service docker start
 Redirecting to /bin/systemctl start docker.service
 [root@otus /]# docker run --name nginx -v /srv/nginx/:/usr/share/nginx/html -p 80:80 -d nginx
@@ -32,13 +36,14 @@ Status: Downloaded newer image for docker.io/nginx:latest
 [root@otus ~]# docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
 41f193d44a21        nginx               "/docker-entrypoin..."   22 minutes ago      Up 22 minutes       0.0.0.0:80->80/tcp   nginx
-
+```
 Включаем в nginx опцию autoindex on;
+```
 [root@otus ~]# docker exec -it nginx bash
-
+```
 
 Создаем окружение для репозитория:
-
+```
 [root@otus yum.repos.d]# createrepo /srv/nginx/x86_64/
 Spawning worker 0 with 1 pkgs
 Spawning worker 1 with 0 pkgs
@@ -50,7 +55,7 @@ Saving file lists metadata
 Saving other metadata
 Generating sqlite DBs
 Sqlite DBs complete
-```
+
 [root@otus yum.repos.d]# yum repolist enabled
 Загружены модули: fastestmirror, product-id, search-disabled-repos, subscription-manager
 
