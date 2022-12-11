@@ -1,0 +1,5 @@
+[local]
+name=OtusHW-Base
+baseurl=http://194.67.106.75/x86_64
+gpgcheck=0
+enabled=1
