@@ -1,5 +1,5 @@
 1. Определить алгоритм с наилучшим сжатием
-
+```
 [root@zfs ~]# lsblk
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda      8:0    0   40G  0 disk
@@ -12,9 +12,9 @@ sdf      8:80   0  512M  0 disk
 sdg      8:96   0  512M  0 disk
 sdh      8:112  0  512M  0 disk
 sdi      8:128  0  512M  0 disk
-
+```
 Создаем 4 пула для тестов с разным сжатием:
-
+```
 zpool create zfs1 mirror /dev/sdb /dev/sdc 
 zpool create zfs2 mirror /dev/sdd /dev/sde 
 zpool create zfs3 mirror /dev/sdf /dev/sdg 
@@ -25,8 +25,9 @@ zfs set compression=lzjb zfs1
 zfs set compression=lz4 zfs2
 zfs set compression=gzip-9 zfs3
 zfs set compression=zle zfs4
-
+```
 Скачиваем файл и копируем в каждый пул:
+```
 wget -O War_and_Peace.txt http://www.gutenberg.org/ebooks/2600.txt.utf-8
 
 [root@zfs /]# ls -l /zfs*
@@ -58,12 +59,13 @@ zfs1  compressratio         1.35x                  -
 zfs2  compressratio         1.62x                  -
 zfs3  compressratio         2.64x                  -
 zfs4  compressratio         1.01x                  -
+```
 Видим что лучший метод - gzip-9
 
 2.  Определение настроек пула
 
 Скачиваем и распаковываем архив
-
+```
 wget -O archive.tar.gz --no-check-certificate https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download
 
 [root@zfs /]# tar -xzvf archive.tar.gz
@@ -82,9 +84,9 @@ zpoolexport/fileb
 	  mirror-0              ONLINE
 	    /zpoolexport/filea  ONLINE
 	    /zpoolexport/fileb  ONLINE
-
+```
 Импортируем
-
+```
 zpool import -d zpoolexport/ otus
 
 [root@zfs /]# zpool status
@@ -100,9 +102,9 @@ config:
 	    /zpoolexport/fileb  ONLINE       0     0     0
 
 errors: No known data errors
-
+```
 Запрос сразу всех параметров пула:
-
+```
 [root@zfs /]# zpool get all otus
 NAME  PROPERTY                       VALUE                          SOURCE
 otus  size                           480M                           -
@@ -159,10 +161,10 @@ otus  feature@spacemap_v2            active                         local
 otus  feature@allocation_classes     enabled                        local
 otus  feature@resilver_defer         enabled                        local
 otus  feature@bookmark_v2            enabled                        local
-
+```
 
 Запрос сразу всех параметром файловой системы:
-
+```
 [root@zfs /]# zfs get all otus
 NAME  PROPERTY              VALUE                  SOURCE
 otus  type                  filesystem             -
@@ -236,28 +238,28 @@ otus  keylocation           none                   default
 otus  keyformat             none                   default
 otus  pbkdf2iters           0                      default
 otus  special_small_blocks  0                      default
-
+```
 Командами посмотрел отдельные параметры
-
+```
 zfs get available otus
 zfs get readonly otus
 zfs get recordsize otus
 zfs get compression otus
 zfs get checksum otus
-
+```
 3. Работа со снапшотом, поиск сообщения от преподавателя
 
 Скачиваем снапшот
-
+```
 wget -O otus_task2.file --no-check-certificate https://drive.google.com/u/0/uc?id=1gH8gCL9y7Nd5Ti3IRmplZPF1XjzxeRAG&export=download
-
+```
 Восстанавливаем снапшот
-
+```
 zfs receive otus/test@today < otus_task2.file
-
+```
 Ищем файл
-
+```
 [root@zfs otus]# find /otus/test -name "secret_message"
 /otus/test/task1/file_mess/secret_message
-
+```
 в файле ссылка на git https://github.com/sindresorhus/awesome
