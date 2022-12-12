@@ -19,7 +19,7 @@ SSH до виртуалбокса строить было лень, поэтом
 
     Добавляем rd.break, после загрузки делаем chroot /sysroot/ + все действия как в способе 1.
 
-![alt text](https://github.com/Systimax22/Otus_HW/blob/main/Lession7/img/2.png "Смена пароля rd.break")
+![alt text](https://github.com/Systimax22/Otus_HW/blob/main/Lession7/img/3.png "Смена пароля rd.break")
 
 ## Способ 3.
 
