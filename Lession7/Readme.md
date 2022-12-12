@@ -63,8 +63,11 @@ mklabel msdos
 mkpart 0 5GB
 
 pvcreate /dev/sdb1/ --bootloaderareasize 1M
+
 vgcreate newotus /dev/sdb1
+
 lvcreate -n root -l 100%FREE newotus
+
 
 ![alt text](https://github.com/Systimax22/Otus_HW/blob/main/Lession7/img/8.png "grub")
 
