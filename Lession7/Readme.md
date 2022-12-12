@@ -55,8 +55,11 @@ mkinitrd -f -v /boot/initramfs-$(uname -r).img $(uname -r)
 
 Добавляем диск в Virtualbox, fdisk -l, видим диск sdb, потом
 parted
+
 select /dev/sdb
+
 mklabel msdos
+
 mkpart 0 5GB
 
 pvcreate /dev/sdb1/ --bootloaderareasize 1M
