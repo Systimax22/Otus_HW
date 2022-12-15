@@ -17,6 +17,7 @@ config.vm.synced_folder ".", "/vagrant", disabled: true
 
           box.vm.box = boxconfig[:box_name]
           box.vm.host_name = boxname.to_s
+          config.vm.network "forwarded_port", guest: 8080, host: 8080
           box.vm.network "private_network", ip: "192.168.56.11",
           virtualbox__intnet: true
           ##box.vm.network "private_network", ip: boxconfig[:ip_addr]
@@ -25,9 +26,9 @@ config.vm.synced_folder ".", "/vagrant", disabled: true
             	  vb.customize ["modifyvm", :id, "--memory", "1024"]
 		  end
 
-#    box.vm.provision "ansible" do |ansible| 
-#             ansible.playbook = "ansible/playbook_watchlog.yml"
-#         end
+    box.vm.provision "ansible" do |ansible| 
+             ansible.playbook = "ansible/playbook_nginx.yml"
+         end
     end
         end
     end

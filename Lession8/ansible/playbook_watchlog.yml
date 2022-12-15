@@ -15,7 +15,7 @@
     - name: Disable SELinux
       ansible.posix.selinux:
         policy: targeted
-        state: disabled   
+        state: disabled
 
     - name: Copy logfile
       ansible.builtin.copy:
