@@ -14,11 +14,11 @@ Dec 15 01:01:01 localhost systemd: Started Session 4 of user root.
 Dec 15 01:01:14 localhost systemd: Starting My watchlog service...
 Dec 15 01:01:14 localhost root: Thu Dec 15 01:01:14 UTC 2022: World found!
 Dec 15 01:01:14 localhost systemd: Started My watchlog service.
-`````
+````
 ## Из репозитория epel установить spawn-fcgi и переписать init-скрипт на unit-файл (имя service должно называться так же: spawn-fcgi).
 
 Вывод - systemctl status spawn-fcgi
-`````
+````
 [root@otus ~]# systemctl status spawn-fcgi
 ● spawn-fcgi.service - Spawn-fcgi startup service by Otus
    Loaded: loaded (/etc/systemd/system/spawn-fcgi.service; enabled; vendor preset: disabled)
@@ -60,24 +60,24 @@ Dec 15 01:01:14 localhost systemd: Started My watchlog service.
            └─4991 /usr/bin/php-cgi
 
 Dec 15 01:00:41 otus systemd[1]: Started Spawn-fcgi startup service by Otus.
-`````
+````
 
 ## Дополнить unit-файл httpd (он же apache) возможностью запустить несколько инстансов сервера с разными конфигурационными файлами.
 
 Вывод ss -tnulp | grep httpd
 
-`````
+````
 [root@otus system]# ss -tnulp | grep httpd
 tcp    LISTEN     0      128    [::]:80                 [::]:*                   users:(("httpd",pid=6048,fd=4),("httpd",pid=6047,fd=4),("httpd",pid=6046,fd=4),("httpd",pid=6045,fd=4),("httpd",pid=6044,fd=4),("httpd",pid=6043,fd=4))
 tcp    LISTEN     0      128    [::]:8080               [::]:*                   users:(("httpd",pid=5699,fd=4),("httpd",pid=5698,fd=4),("httpd",pid=5697,fd=4),("httpd",pid=5696,fd=4),("httpd",pid=5695,fd=4),("httpd",pid=5694,fd=4))
 tcp    LISTEN     0      128    [::]:8081               [::]:*                   users:(("httpd",pid=5798,fd=4),("httpd",pid=5797,fd=4),("httpd",pid=5796,fd=4),("httpd",pid=5795,fd=4),("httpd",pid=5794,fd=4),("httpd",pid=5793,fd=4))
-``````
+````
 
 
-##Скачать демо-версию Atlassian Jira и переписать основной скрипт запуска на unit-файл.
+## Скачать демо-версию Atlassian Jira и переписать основной скрипт запуска на unit-файл.
 
 
-
+````
 touch /lib/systemd/system/jira.service
 chmod 664 /lib/systemd/system/jira.service
 
@@ -102,4 +102,4 @@ systemctl daemon-reload
 systemctl enable jira.service
 systemctl start jira.service
 systemctl status jira.service
-
+````
