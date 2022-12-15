@@ -47,3 +47,4 @@ Lession8/.vagrant/machines/otus/virtualbox/private_key
 Lession8/.vagrant/machines/otus/virtualbox/synced_folders
 Lession8/.vagrant/machines/otus/virtualbox/vagrant_cwd
 Lession8/.vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory
+*.rb
