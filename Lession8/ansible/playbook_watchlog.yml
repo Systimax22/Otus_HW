@@ -162,8 +162,6 @@
         - files/first.conf
         - files/second.conf
 
-
-
     - name: Start httpd first service
       ansible.builtin.systemd:
         name: httpd@first.service
