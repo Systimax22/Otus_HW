@@ -24,14 +24,8 @@ config.vm.synced_folder ".", "/vagrant", disabled: true
           box.vm.provider :virtualbox do |vb|
             	  vb.customize ["modifyvm", :id, "--memory", "1024"]
 		  end
-    ##     box.vm.provision "shell", inline: <<-SHELL
-    #     #install zfs repo
-    #      yum install -y centos-release-ansible-29
-    #      yum install -y ansible
-    ##  SHELL
-   box.vm.provision "ansible" do |ansible|
-    #ansible.playbook = "playbook_multiple_httpd.yml"
-            #ansible.playbook = "playbook_spawn_fcgi.yml"  
+
+   box.vm.provision "ansible" do |ansible| 
             ansible.playbook = "ansible/playbook_watchlog.yml"
         end
     end
