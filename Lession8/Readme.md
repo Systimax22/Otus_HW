@@ -15,7 +15,7 @@ Dec 15 01:01:14 localhost systemd: Starting My watchlog service...
 Dec 15 01:01:14 localhost root: Thu Dec 15 01:01:14 UTC 2022: World found!
 Dec 15 01:01:14 localhost systemd: Started My watchlog service.
 `````
-##Из репозитория epel установить spawn-fcgi и переписать init-скрипт на unit-файл (имя service должно называться так же: spawn-fcgi).
+## Из репозитория epel установить spawn-fcgi и переписать init-скрипт на unit-файл (имя service должно называться так же: spawn-fcgi).
 
 Вывод - systemctl status spawn-fcgi
 `````
@@ -62,7 +62,7 @@ Dec 15 01:01:14 localhost systemd: Started My watchlog service.
 Dec 15 01:00:41 otus systemd[1]: Started Spawn-fcgi startup service by Otus.
 `````
 
-##Дополнить unit-файл httpd (он же apache) возможностью запустить несколько инстансов сервера с разными конфигурационными файлами.
+## Дополнить unit-файл httpd (он же apache) возможностью запустить несколько инстансов сервера с разными конфигурационными файлами.
 
 Вывод ss -tnulp | grep httpd
 
