@@ -1,0 +1,24 @@
+Wed Dec 14 23:19:41.621 <kernel> Setting BTCoex Config: enable_2G:1, profile_2g:0, enable_5G:1, profile_5G:0
+Wed Dec 14 23:19:46.592 <kernel> Setting BTCoex Profile: band:8
+Wed Dec 14 23:19:46.592 <kernel> Profile[0]: mode:0; desense:0; desense_level:0; chain_power_offset:<kernel> 0,<kernel> 0,<kernel> 0,<kernel> 0,<kernel>
+Wed Dec 14 23:19:46.592 <kernel> Profile[1]: mode:0; desense:0; desense_level:0; chain_power_offset:<kernel> 0,<kernel> 0,<kernel> 0,<kernel> 0,<kernel>
+Wed Dec 14 23:19:46.592 <kernel> Profile[2]: mode:0; desense:0; desense_level:0; chain_power_offset:<kernel> 0,<kernel> 0,<kernel> 0,<kernel> 0,<kernel>
+Wed Dec 14 23:19:46.592 <kernel> Setting BTCoex Profile: band:2
+Wed Dec 14 23:19:46.592 <kernel> Profile[0]: mode:0; desense:0; desense_level:0; chain_power_offset:<kernel> 0,<kernel> 0,<kernel> 0,<kernel> 0,<kernel>
+Wed Dec 14 23:19:46.592 <kernel> Setting BTCoex Config: enable_2G:1, profile_2g:0, enable_5G:1, profile_5G:0
+Wed Dec 14 23:19:51.593 <kernel> Setting BTCoex Profile: band:8
+Wed Dec 14 23:19:51.593 <kernel> Profile[0]: mode:0; desense:0; desense_level:0; chain_power_offset:<kernel> 0,<kernel> 0,<kernel> 0,<kernel> 0,<kernel>
+Wed Dec 14 23:19:51.593 <kernel> Profile[1]: mode:0; desense:0; desense_level:0; chain_power_offset:<kernel> 0,<kernel> 0,<kernel> 0,<kernel> 0,<kernel>
+Wed Dec 14 23:19:51.593 <kernel> Profile[2]: mode:0; desense:0; desense_level:0; chain_power_offset:<kernel> 0,<kernel> 0,<kernel> 0,<kernel> 0,<kernel>
+Wed Dec 14 23:19:51.593 <kernel> Setting BTCoex Profile: band:ALERT
+Wed Dec 14 23:19:51.593 <kernel> Profile[0]: mode:0; desense:0; desense_level:0; chain_power_offset:<kernel> 0,<kernel> 0,<kernel> 0,<kernel> 0,<kernel>
+Wed Dec 14 23:19:51.593 <kernel> Setting BTCoex Config: enable_2G:1, profile_2g:0, enable_5G:1, profile_5G:0
+Wed Dec 14 23:19:56.593 <kernel> Setting BTCoex Profile: band:8
+Wed Dec 14 23:19:56.593 <kernel> Profile[0]: mode:0; desense:0; desense_level:0; chain_power_offset:<kernel> 0,<kernel> 0,<kernel> 0,<kernel> 0,<kernel>
+Wed Dec 14 23:19:56.593 <kernel> Profile[1]: mode:0; desense:0; desense_level:0; chain_power_offset:<kernel> 0,<kernel> 0,<kernel> 0,<kernel> 0,<kernel>
+Wed Dec 14 23:19:56.593 <kernel> Profile[2]: mode:0; desense:0; desense_level:0; chain_power_offset:<kernel> 0,<kernel> 0,<kernel> 0,<kernel> 0,<kernel>
+Wed Dec 14 23:19:56.593 <kernel> Setting BTCoex Profile: band:2
+Wed Dec 14 23:19:56.593 <kernel> Profile[0]: mode:0; desense:0; desense_level:0; chain_power_offset:<kernel> 0,<kernel> 0,<kernel> 0,<kernel> 0,<kernel>
+Wed Dec 14 23:19:56.593 <kernel> Setting BTCoex Config: enable_2G:1, profile_2g:0, enable_5G:1, profile_5G:0
+Wed Dec 14 23:20:01.593 <kernel> Setting BTCoex Profile: band:8
+Wed Dec 14 23:20:01.593 <kernel> Profile[0]: mode:0; desense:0; desense_level:0; chain_power_offset:<kernel> 0,<kernel> 0,<kernel> 0,<kernel> 0,<kernel>

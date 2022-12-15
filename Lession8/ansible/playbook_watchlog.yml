@@ -1,0 +1,177 @@
+---
+
+########### watchlog setup
+
+- name: Setup HW server
+  hosts: otus
+  become: true
+  tasks:
+    - name: Ensure SELinux is set to Disable
+      ansible.builtin.lineinfile:
+        path: /etc/selinux/config
+        regexp: '^SELINUX='
+        line: SELINUX=Disable
+
+    - name: Disable SELinux
+      ansible.posix.selinux:
+        policy: targeted
+        state: disabled   
+
+    - name: Copy logfile
+      ansible.builtin.copy:
+        src: files/watchlog.log
+        dest: /var/log/watchlog.log
+        owner: vagrant
+        group: vagrant
+        mode: 0755
+
+    - name: Copy config
+      ansible.builtin.copy:
+        src: files/watchlog
+        dest: /etc/sysconfig/watchlog
+        owner: vagrant
+        group: vagrant
+        mode: 0755
+
+    - name: Copy watchlog search script
+      ansible.builtin.copy:
+        src: files/watchlog.sh
+        dest: /opt/watchlog.sh
+        owner: vagrant
+        group: vagrant
+        mode: a+x
+
+
+    - name: Copy service
+      ansible.builtin.copy:
+        src: files/watchlog.service
+        dest: /etc/systemd/system/watchlog.service
+        owner: vagrant
+        group: vagrant
+        mode: 0644
+
+    - name: Copy timer
+      ansible.builtin.copy:
+        src: files/watchlog.timer
+        dest: /etc/systemd/system/watchlog.timer
+        owner: vagrant
+        group: vagrant
+        mode: 0644
+
+    - name: Enable and start watchlog timer
+      ansible.builtin.systemd:
+        name: watchlog.timer
+        state: started
+        enabled: true
+
+    - name: Enable and start watchlog service
+      ansible.builtin.systemd:
+        name: watchlog.service
+        state: started
+        enabled: true
+
+
+########### spawn-fcgi setup
+
+
+    - name: Install packages with yum
+      ansible.legacy.yum:
+        name: '{{ item }}'
+        state: present
+        update_cache: true
+      with_items:
+        - epel-release
+        - spawn-fcgi
+        - php
+        - mc
+
+    - name: Insert lineinfile SOCKET
+      lineinfile:
+        path: /etc/sysconfig/spawn-fcgi
+        insertafter: '#SOCKET=/var/run/php-fcgi.sock'
+        line: "SOCKET=/var/run/php-fcgi.sock"
+        state: present
+
+    - name: Insert lineinfile OPTIONS
+      lineinfile:
+        path: /etc/sysconfig/spawn-fcgi
+        insertafter: '#OPTIONS="-u apache -g apache -s $SOCKET -S -M 0600 -C 32 -F 1 -P /var/run/spawn-fcgi.pid -- /usr/bin/php-cgi"'
+        line: 'OPTIONS="-u apache -g apache -s $SOCKET -S -M 0600 -C 32 -F 1 -P /var/run/spawn-fcgi.pid -- /usr/bin/php-cgi"'
+        state: present
+
+    - name: Copy file for spawn-fcgi.service
+      ansible.legacy.copy:
+        src: files/spawn-fcgi.service
+        dest: /etc/systemd/system/spawn-fcgi.service
+        owner: vagrant
+        group: vagrant
+        mode: 0644
+
+    - name: Start spawn-fcgi.service
+      ansible.builtin.systemd:
+        name: spawn-fcgi.service
+        state: started
+        enabled: true
+
+
+############ HTTPD ######################
+
+
+    - name: Yum install packages
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+        update_cache: true
+
+    - name: Copy of httpd.service
+      ansible.builtin.shell: "cp /usr/lib/systemd/system/httpd.service /usr/lib/systemd/system/httpd@.service"
+
+    - name: Edit httpd.service
+      ansible.builtin.lineinfile:
+        path: /usr/lib/systemd/system/httpd@.service
+        regexp: '^EnvironmentFile='
+        line: EnvironmentFile=/etc/sysconfig/httpd-%I
+
+
+
+    # - name: Get config from host
+    #   ansible.builtin.fetch:
+    #     src: /etc/httpd/conf/httpd.conf
+    #     dest: files/httpd.conf
+    #     flat: yes
+
+    - name: Copy httpd service config
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: '/etc/sysconfig/'
+        owner: vagrant
+        group: vagrant
+        mode: 0644
+      with_items:
+        - files/httpd-first
+        - files/httpd-second
+
+    - name: Copy two config files
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: /etc/httpd/conf/
+        owner: vagrant
+        group: vagrant
+        mode: 0644
+      loop:
+        - files/first.conf
+        - files/second.conf
+
+
+
+    - name: Start httpd first service
+      ansible.builtin.systemd:
+        name: httpd@first.service
+        state: started
+        enabled: true
+
+    - name: Start httpd second service
+      ansible.builtin.systemd:
+        name: httpd@second.service
+        state: started
+        enabled: true
