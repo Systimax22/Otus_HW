@@ -103,5 +103,30 @@ WantedBy=multi-user.target
 systemctl daemon-reload
 systemctl enable jira.service
 systemctl start jira.service
-systemctl status jira.service
+
+````
+Вывод systemctl status jira.service
+````
+root@jira:~# systemctl status jira.service
+● jira.service
+     Loaded: loaded (/etc/init.d/jira; generated)
+     Active: active (running) since Thu 2022-12-15 04:35:38 MSK; 3s ago
+       Docs: man:systemd-sysv-generator(8)
+    Process: 354992 ExecStart=/etc/init.d/jira start (code=exited, status=0/SUCCESS)
+      Tasks: 22 (limit: 2296)
+     Memory: 147.5M
+        CPU: 6.576s
+     CGroup: /system.slice/jira.service
+             └─355035 /opt/atlassian/jira/jre//bin/java -Djava.util.logging.config.file=/opt/atlassian/jira/conf/logging.properties -Djava.util.logging.manager=or>
+
+Dec 15 04:35:38 jira jira[355007]:                `UOJ
+Dec 15 04:35:38 jira jira[355007]:
+Dec 15 04:35:38 jira jira[355007]:       Atlassian Jira
+Dec 15 04:35:38 jira jira[355007]:       Version : 9.3.1
+Dec 15 04:35:38 jira jira[355007]:
+Dec 15 04:35:38 jira jira[354999]: If you encounter issues starting or stopping Jira, please see the Troubleshooting guide at https://docs.atlassian.com/jira/jadm>
+Dec 15 04:35:38 jira jira[354999]: Server startup logs are located in /opt/atlassian/jira/logs/catalina.out
+Dec 15 04:35:38 jira jira[354999]: Tomcat started.
+Dec 15 04:35:38 jira runuser[354997]: pam_unix(runuser:session): session closed for user jira
+Dec 15 04:35:38 jira systemd[1]: Started jira.service.
 ````
