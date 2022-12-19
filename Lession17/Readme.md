@@ -73,6 +73,7 @@ CMD ["php-fpm"]
 Все заливаем в репо:
 
 Nginx - https://hub.docker.com/layers/systimax/otustest/docker-nginx-php/images/sha256-cad666687fc68117efe427935df1a360fe6b8b2a890ad7a5c0f05278add589ba?context=repo
+
 PHP - https://hub.docker.com/layers/systimax/otustest/docker-php/images/sha256-80b93aa60a8c190c1b5ca96b316a9ddd95face5a8cd0509eaa1b76a08586bfa1?context=repo
 
 Создаем docker-compose:
