@@ -1,0 +1,21 @@
+version: '3'
+services:
+  nginx:
+    image: systimax/otustest:docker-nginx-php
+    container_name: nginx-container
+    ports:
+      - 80:80
+    links:
+      - php
+    volumes:
+          - ./www/html/:/var/www/html/
+   
+
+  php:
+    image: systimax/otustest:docker-php
+    container_name: php-container
+    
+    #ports:
+    #   – 9000
+    volumes:
+          - ./www/html/:/var/www/html/
