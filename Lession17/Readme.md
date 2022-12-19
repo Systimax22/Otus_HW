@@ -22,9 +22,9 @@ RUN	apk update && \
 Проверяем что все работает, заливаем в репо.
 
 Образ залит в репо:
-````
+
 https://hub.docker.com/layers/systimax/otustest/nginx/images/sha256-dca10d73c0dbe57d048517272ca77d82022fe0dfe14fbc1f5a7c601d818d472c?context=repo
-````
+
 Запуск:
 
 ````
@@ -71,8 +71,9 @@ CMD ["php-fpm"]
 ````
 
 Все заливаем в репо:
-https://hub.docker.com/layers/systimax/otustest/docker-nginx-php/images/sha256-cad666687fc68117efe427935df1a360fe6b8b2a890ad7a5c0f05278add589ba?context=repo
-https://hub.docker.com/layers/systimax/otustest/docker-php/images/sha256-80b93aa60a8c190c1b5ca96b316a9ddd95face5a8cd0509eaa1b76a08586bfa1?context=repo
+
+Nginx - https://hub.docker.com/layers/systimax/otustest/docker-nginx-php/images/sha256-cad666687fc68117efe427935df1a360fe6b8b2a890ad7a5c0f05278add589ba?context=repo
+PHP - https://hub.docker.com/layers/systimax/otustest/docker-php/images/sha256-80b93aa60a8c190c1b5ca96b316a9ddd95face5a8cd0509eaa1b76a08586bfa1?context=repo
 
 Создаем docker-compose:
 ````
