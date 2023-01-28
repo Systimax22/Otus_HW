@@ -44,9 +44,12 @@ Got permission denied while trying to connect to the Docker daemon socket at uni
 Добавляем пользователя в группу docker:
 ````
 sudo usermod -aG docker systimax
+````
 
 Перелогиниваемся, и прверяем:
 ````
 systimax@mail:~$ docker ps
 CONTAINER ID   IMAGE             COMMAND           CREATED       STATUS       PORTS                                                                                                                                                                                                                                                              NAMES
 45fcda322fe6   mail:rc5.ipa   "/sbin/my_init"   7 weeks ago   Up 4 weeks   0.0.0.0:25->25/tcp, 0.0.0.0:53->53/tcp, 0.0.0.0:80->80/tcp, 0.0.0.0:110->110/tcp, 0.0.0.0:143->143/tcp, 0.0.0.0:443->443/tcp, 0.0.0.0:465->465/tcp, 0.0.0.0:587->587/tcp, 0.0.0.0:993->993/tcp, 0.0.0.0:8083->8083/tcp, 0.0.0.0:53->53/udp, 0.0.0.0:2222->22/tcp   mail.rc5.ipa
+
+````
