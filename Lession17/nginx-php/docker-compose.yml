@@ -1,4 +1,4 @@
-version: '3'
+version: '3.6'
 services:
   nginx:
     image: systimax/otustest:docker-nginx-php
@@ -7,8 +7,14 @@ services:
       - 80:80
     links:
       - php
+    #volumes:
+    #     - ./www/html/:/var/www/html/
     volumes:
-          - ./www/html/:/var/www/html/
+#      - type: tmpfs
+#        source: /dev/shm
+#        target: /var/www/html/
+    - php::/var/www/html/
+
    
 
   php:
@@ -17,5 +23,10 @@ services:
     
     #ports:
     #   – 9000
+    #volumes:
+    #      - ./www/html/:/var/www/html/
     volumes:
-          - ./www/html/:/var/www/html/
+      - type: tmpfs
+#        source: /dev/shm
+        target: /var/www/html/
+
